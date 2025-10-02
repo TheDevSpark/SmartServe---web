@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Star, Send, Upload } from "lucide-react"; // 👈 Upload add kiya
 import PageHeader from "../components/PageHeader";
+import FeedbackSuccessModal from "../components/FeedbackSuccess";
 
 const FeedbackPage = () => {
   const [ratings, setRatings] = useState({
@@ -14,7 +15,7 @@ const FeedbackPage = () => {
     cleanliness: 0,
     waitTime: 0,
   });
-
+ const [showSuccessModal, setShowSuccessModal] = useState(false); 
   const [feedback, setFeedback] = useState("");
   const [visitDate, setVisitDate] = useState("");
 
@@ -75,7 +76,7 @@ const FeedbackPage = () => {
       feedback,
       visitDate,
     });
-    alert("Thank you for your feedback!");
+    setShowSuccessModal(true);;
   };
 
   const isFormValid = ratings.overall > 0 && visitDate.trim() !== "";
@@ -219,8 +220,15 @@ const FeedbackPage = () => {
           >
             <Send size={18} /> Submit Feedback
           </button>
+               <FeedbackSuccessModal 
+        isOpen={showSuccessModal} 
+        onClose={() => setShowSuccessModal(false)} 
+      />
+  
         </div>
+      
       </div>
+    
     </>
   );
 };
