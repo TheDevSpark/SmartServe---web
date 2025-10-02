@@ -33,7 +33,7 @@ const FeaturedDishes = () => {
     }
   ];
 
-  // 👇 icon ab string hai
+ 
   const stats = [
     {
       value: "4.8★",

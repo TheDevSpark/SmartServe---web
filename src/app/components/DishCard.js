@@ -1,7 +1,7 @@
 import React from "react";
 import { Star, Clock } from "lucide-react";
 
-const DishCard = ({ dish, showCategory = false ,showDescription = false }) => {
+const DishCard = ({ dish, showCategory = false, showDescription = false }) => {
   return (
     <div className="bg-white rounded-[18px] shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className="relative">
@@ -14,26 +14,24 @@ const DishCard = ({ dish, showCategory = false ,showDescription = false }) => {
 
         {/* Category or Custom Badges */}
         <div className="absolute top-3 left-3 flex  flex-col  gap-2">
-          {dish.badges && dish.badges.length > 0 ? (
-            dish.badges.map((badge, idx) => (
-              <span
-                key={idx}
-                className={`px-2 py-1 rounded-full text-xs font-medium 
-                  ${badge === "Popular" ? "bg-[#6e2f5c] text-white"  : ""}
-                  ${badge === "Vegetarian" ? "bg-gray-50 text-black"  : ""}
+          {dish.badges && dish.badges.length > 0
+            ? dish.badges.map((badge, idx) => (
+                <span
+                  key={idx}
+                  className={`px-2 py-1 rounded-full text-xs font-medium 
+                  ${badge === "Popular" ? "bg-[#6e2f5c] text-white" : ""}
+                  ${badge === "Vegetarian" ? "bg-gray-50 text-black" : ""}
                   ${badge === "Gluten Free" ? "bg-gray-50 text-black" : ""}
                 `}
-              >
-                {badge}
-              </span>
-            ))
-          ) : (
-            showCategory && (
-              <span className="px-2 py-1 rounded-full text-xs font-medium text-white bg-[#6e2f5c]">
-                {dish.category}
-              </span>
-            )
-          )}
+                >
+                  {badge}
+                </span>
+              ))
+            : showCategory && (
+                <span className="px-2 py-1 rounded-full text-xs font-medium text-white bg-[#6e2f5c]">
+                  {dish.category}
+                </span>
+              )}
         </div>
 
         {/* Rating */}
@@ -49,10 +47,10 @@ const DishCard = ({ dish, showCategory = false ,showDescription = false }) => {
       <div className="p-4 mt-5">
         <h3 className="text-lg font-[400] text-gray-800 mb-2">{dish.name}</h3>
 
-             {/* Dish Description (optional for menu page) */}
+        {/* Dish Description (optional for menu page) */}
         {showDescription && (
           <p className="text-sm text-gray-600 mb-2 line-clamp-2">
-            {dish.description }
+            {dish.description}
           </p>
         )}
 
@@ -63,12 +61,9 @@ const DishCard = ({ dish, showCategory = false ,showDescription = false }) => {
           </span>
         )}
 
-
         <div className="flex justify-between items-center text-sm text-gray-600 mb-3">
           {/* Price */}
-          <span className="text-2xl font-md text-[#334f3b]">
-            ${dish.price}
-          </span>
+          <span className="text-2xl font-md text-[#334f3b]">${dish.price}</span>
 
           {/* Timing */}
           <div className="flex items-center">
@@ -78,11 +73,14 @@ const DishCard = ({ dish, showCategory = false ,showDescription = false }) => {
         </div>
 
         {/* Add to Cart */}
-<div className="flex justify-center"> 
-  <button type="button" className="flex items-center justify-center gap-2 text-white bg-gradient-to-br from-[#334f3b] to-[#21c24f] hover:bg-gradient-to-bl font-medium rounded-lg text-sm md:px-30 lg:px-25 xl:px-32 px-29 py-3 text-center" > 
-    Add to Cart
-     </button>  
-</div>
+        <div className="flex justify-center">
+          <button
+            type="button"
+            className="flex items-center justify-center gap-2 text-white bg-gradient-to-br from-[#334f3b] to-[#21c24f]  font-medium rounded-lg text-sm md:px-30 lg:px-25 xl:px-32 px-29 py-3 text-center"
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );
